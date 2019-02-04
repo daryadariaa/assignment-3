@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         Assignment3.numberOfCharactersInName("Darya Chastokolenko")
         Assignment3.separator("TASK#2")
         Assignment3.checkPatronymic("Igorevna")
+        Assignment3.separator("TASK#3")
+        Assignment3.divideName("DaryaChastokolenko")
     }
 }
 

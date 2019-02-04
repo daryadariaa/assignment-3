@@ -23,4 +23,25 @@ class Assignment3: NSObject {
         let suffix = "na"
         name.hasSuffix("na") ? print("\"\(name) has ending \"\(suffix)\"") : print("\"\(name) doesn't have ending \"\(suffix)\"")
     }
+    
+    static func divideName(_ name: String) {
+        var myName = name
+        var newName = ""
+        newName.append(myName[myName.startIndex])
+        let uppercase = CharacterSet.uppercaseLetters
+        for scalar in myName.unicodeScalars.dropFirst() {
+            if uppercase.contains(scalar) {
+                newName.append(" ")
+            }
+            let character = Character(scalar)
+            newName.append(character)
+        }
+        let firstSpace = newName.firstIndex(of: " ")!
+        let afterSpace = newName.index(after: firstSpace)
+        let firstName = String(newName[..<firstSpace])
+        let surname = String(newName[afterSpace..<newName.endIndex])
+        print("My name is \(firstName)")
+        print("My surname is \(surname)")
+        print("FULL name is \(newName)")
+    }
 }
