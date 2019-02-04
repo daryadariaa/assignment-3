@@ -21,11 +21,6 @@ class Assignment3: NSObject {
     
     static func checkPatronymic(_ name: String) {
         let suffix = "na"
-        if name.hasSuffix("na") {
-            print("\"\(name) has ending \"\(suffix)")
-        }
-        else {
-            print("\"\(name) doesn't have ending \"\(suffix)\"")
-        }
+        name.hasSuffix("na") ? print("\"\(name) has ending \"\(suffix)\"") : print("\"\(name) doesn't have ending \"\(suffix)\"")
     }
 }
