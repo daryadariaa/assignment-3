@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         Assignment3.divideName("DaryaChastokolenko")
         Assignment3.separator("TASK#4")
         Assignment3.reverseString("Qwe")
+        Assignment3.separator("TASK#5")
+        Assignment3.addDecimalDigits(inputNumber: 123456234)
     }
 }
 

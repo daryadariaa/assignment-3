@@ -54,4 +54,25 @@ class Assignment3: NSObject {
         }
         print("Reverse string is \(newString)")
     }
+    
+    static func addDecimalDigits(inputNumber: Int) {
+        var newString = String(inputNumber)
+        var finalString = ""
+        let index = newString.count / 3
+        func addingDigits(startIndex: Int){
+            for _ in startIndex..<index {
+                newString.insert(",", at: newString.index(newString.endIndex, offsetBy: -3))
+                let range = newString.index(newString.endIndex, offsetBy: -4)..<newString.endIndex
+                finalString.append(contentsOf: newString[range])
+                newString = String(newString.unicodeScalars.dropLast(4))
+            }
+            print("Number with added decimal digits is \(newString + finalString)")
+        }
+        if newString.count % 3 == 0 {
+            addingDigits(startIndex: 1)
+        }
+        else {
+            addingDigits(startIndex: 0)
+        }
+    }
 }
