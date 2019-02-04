@@ -44,4 +44,14 @@ class Assignment3: NSObject {
         print("My surname is \(surname)")
         print("FULL name is \(newName)")
     }
+    
+    static func reverseString(_ inputString: String) {
+        var initialString = inputString
+        var newString = ""
+        for _ in 1...inputString.count {
+            newString += String(initialString[initialString.index(before: initialString.endIndex)])
+            initialString = String(initialString.unicodeScalars.dropLast())
+        }
+        print("Reverse string is \(newString)")
+    }
 }

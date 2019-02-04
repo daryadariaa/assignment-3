@@ -19,6 +19,8 @@ class ViewController: UIViewController {
         Assignment3.checkPatronymic("Igorevna")
         Assignment3.separator("TASK#3")
         Assignment3.divideName("DaryaChastokolenko")
+        Assignment3.separator("TASK#4")
+        Assignment3.reverseString("Qwe")
     }
 }
 
