@@ -75,4 +75,43 @@ class Assignment3: NSObject {
             addingDigits(startIndex: 0)
         }
     }
+    
+    static func passcodeSecurityChecking(passcode: String) {
+        var counter = 0
+        var countLowerCases = 0
+        var countUpperCases = 0
+        var countSymbols = 0
+        func checkCounter(_ newCounter: Int) {
+            if newCounter != 0 {
+                counter += 1
+            }
+        }
+        let numbersInPasscode = Int(passcode.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
+        if numbersInPasscode != nil {
+            counter += 1
+        }
+        let uppercase = CharacterSet.uppercaseLetters
+        for scalar in passcode.unicodeScalars {
+            if uppercase.contains(scalar) {
+                countUpperCases += 1
+            }
+        }
+        checkCounter(countUpperCases)
+        let lowercase = CharacterSet.lowercaseLetters
+        for scalar in passcode.unicodeScalars {
+            if lowercase.contains(scalar) {
+                countLowerCases += 1
+            }
+        }
+        checkCounter(countLowerCases)
+        let symbolsChecking = CharacterSet.symbols
+        let punctuationSymbolsChecking = CharacterSet.punctuationCharacters
+        for scalar in passcode.unicodeScalars {
+            if symbolsChecking.contains(scalar) || punctuationSymbolsChecking.contains(scalar) {
+                countSymbols += 1
+            }
+        }
+        checkCounter(countSymbols)
+        print("Your PASSCODE complexity is \(counter)")
+    }
 }

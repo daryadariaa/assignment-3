@@ -23,6 +23,8 @@ class ViewController: UIViewController {
         Assignment3.reverseString("Qwe")
         Assignment3.separator("TASK#5")
         Assignment3.addDecimalDigits(inputNumber: 123456234)
+        Assignment3.separator("TASK#6")
+        Assignment3.passcodeSecurityChecking(passcode: "Ru6*RcrKbh^63BuY")
     }
 }
 
