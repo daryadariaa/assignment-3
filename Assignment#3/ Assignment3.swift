@@ -114,4 +114,16 @@ class Assignment3: NSObject {
         checkCounter(countSymbols)
         print("Your PASSCODE complexity is \(counter)")
     }
+    
+    static func arraySorting(array: [Int]) {
+        var newArray = array
+        for i in 0..<newArray.count {
+            for j in 0..<newArray.count {
+                if newArray[i] < newArray[j] {
+                    newArray.swapAt(j, i)
+                }
+            }
+        }
+        print(newArray)
+    }
 }

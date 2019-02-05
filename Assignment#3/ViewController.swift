@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         Assignment3.addDecimalDigits(inputNumber: 123456234)
         Assignment3.separator("TASK#6")
         Assignment3.passcodeSecurityChecking(passcode: "Ru6*RcrKbh^63BuY")
+        Assignment3.separator("TASK#7")
+        Assignment3.arraySorting(array: [1, 2, 56, 3, 5, 3545, 1, 67, 1000])
     }
 }
 
