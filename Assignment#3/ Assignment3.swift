@@ -15,8 +15,9 @@ class Assignment3: NSObject {
     }
     
     static func numberOfCharactersInName(_ myName: String) {
-        let numberOfCharacters = myName.count
-        print("In \"\(myName)\" number of characters is \( numberOfCharacters - 1)")
+        let newMyName = myName.replacingOccurrences(of: " ", with: "")
+        let numberOfCharacters = newMyName.count
+        print("In \"\(myName)\" number of characters is \(numberOfCharacters)")
     }
     
     static func checkPatronymic(_ name: String) {
@@ -57,22 +58,84 @@ class Assignment3: NSObject {
     
     static func addDecimalDigits(inputNumber: Int) {
         var newString = String(inputNumber)
+        print("Old NUMBER without digits is \(newString)")
         var finalString = ""
         let index = newString.count / 3
-        func addingDigits(startIndex: Int){
-            for _ in startIndex..<index {
+        if newString.count % 3 == 0 {
+            for _ in 1..<index {
                 newString.insert(",", at: newString.index(newString.endIndex, offsetBy: -3))
                 let range = newString.index(newString.endIndex, offsetBy: -4)..<newString.endIndex
-                finalString.append(contentsOf: newString[range])
+                finalString.insert(contentsOf: newString[range], at: finalString.startIndex)
                 newString = String(newString.unicodeScalars.dropLast(4))
             }
             print("Number with added decimal digits is \(newString + finalString)")
         }
-        if newString.count % 3 == 0 {
-            addingDigits(startIndex: 1)
-        }
         else {
-            addingDigits(startIndex: 0)
+            for _ in 0..<index {
+                newString.insert(",", at: newString.index(newString.endIndex, offsetBy: -3))
+                let range = newString.index(newString.endIndex, offsetBy: -4)..<newString.endIndex
+                finalString.insert(contentsOf: newString[range], at: finalString.startIndex)
+                newString = String(newString.unicodeScalars.dropLast(4))
+            }
+            print("Number with added decimal digits is \(newString + finalString)")
         }
+    }
+    
+    static func passcodeSecurityChecking(passcode: String) {
+        var counter = 0
+        var countLowerCases = 0
+        var countUpperCases = 0
+        var countSymbols = 0
+        func checkCounter(_ newCounter: Int) {
+            if newCounter != 0 {
+                counter += 1
+            }
+        }
+        let numbersInPasscode = Int(passcode.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
+        if numbersInPasscode != nil {
+            counter += 1
+        }
+        let uppercase = CharacterSet.uppercaseLetters
+        for scalar in passcode.unicodeScalars {
+            if uppercase.contains(scalar) {
+                countUpperCases += 1
+            }
+        }
+        checkCounter(countUpperCases)
+        let lowercase = CharacterSet.lowercaseLetters
+        for scalar in passcode.unicodeScalars {
+            if lowercase.contains(scalar) {
+                countLowerCases += 1
+            }
+        }
+        checkCounter(countLowerCases)
+        let symbolsChecking = CharacterSet.symbols
+        let punctuationSymbolsChecking = CharacterSet.punctuationCharacters
+        for scalar in passcode.unicodeScalars {
+            if symbolsChecking.contains(scalar) || punctuationSymbolsChecking.contains(scalar) {
+                countSymbols += 1
+            }
+        }
+        checkCounter(countSymbols)
+        print("Your PASSCODE complexity is \(counter)")
+    }
+    
+    static func arraySorting(array: [Int]) {
+        var newArray = array
+        for i in 0..<newArray.count {
+            for j in 0..<newArray.count {
+                if newArray[i] < newArray[j] {
+                    newArray.swapAt(j, i)
+                }
+            }
+        }
+        //        for i in 1..<newArray.count {
+        //                if i < newArray.count {
+        //                    if newArray[i] == newArray[i-1] {
+        //                        newArray.remove(at: i-1)
+        //                    }
+        //                }
+        //            }
+        print(newArray)
     }
 }
