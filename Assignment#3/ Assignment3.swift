@@ -137,4 +137,43 @@ class Assignment3: NSObject {
         }
         print(newArrayWithUniqueNumbers)
     }
+    
+    static func convertStrToTranslit(inputString: String) {
+        let newString = inputString
+        var translitString: String = ""
+        let alphabet: [Character: Character] = ["б": "b", "д": "d", "ф": "f", "г": "g", "ж": "j", "л": "l", "м": "m", "н": "n", "Л": "L", "Б": "B", "Н": "N"]
+        for character in newString {
+            for (rusCharacter, engCharacter) in alphabet {
+                if character == rusCharacter {
+                    translitString.append(engCharacter)
+                }
+            }
+        }
+        print(translitString)
+    }
+    
+    static func  selectStrings(inputArray: [String], stringForSearch: String) {
+        print("Input array of strings is \(inputArray)")
+        let initialArray = inputArray
+        var newArray = [String]()
+        for someString in initialArray {
+            if someString.contains(stringForSearch) {
+                newArray.append(someString)
+            }
+        }
+        let  sortedNewArray = newArray.sorted(by: <)
+        print("STRING FOR SEARCH IS \(stringForSearch). Sorted Array IS \(sortedNewArray)")
+    }
+    
+    static func antimat(inputString: String) {
+        print("UNEDITED TEXT\n\(inputString)\n")
+        var newString = inputString
+        let swearWords: Set<String> = ["Fuck", "ass", "asshole", "shit", "damn", "bitch", "crap", "niggas"]
+        for name in swearWords {
+            if newString.contains(name) {
+                newString = newString.replacingOccurrences(of: name, with: "***")
+            }
+        }
+        print("\nText with NO ABUSIVE language:\n\(newString)")
+    }
 }
