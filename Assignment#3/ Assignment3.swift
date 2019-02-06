@@ -15,8 +15,9 @@ class Assignment3: NSObject {
     }
     
     static func numberOfCharactersInName(_ myName: String) {
-        let numberOfCharacters = myName.count
-        print("In \"\(myName)\" number of characters is \( numberOfCharacters - 1)")
+        let newMyName = myName.replacingOccurrences(of: " ", with: "")
+        let numberOfCharacters = newMyName.count
+        print("In \"\(myName)\" number of characters is \(numberOfCharacters)")
     }
     
     static func checkPatronymic(_ name: String) {
@@ -57,22 +58,26 @@ class Assignment3: NSObject {
     
     static func addDecimalDigits(inputNumber: Int) {
         var newString = String(inputNumber)
+        print("Old NUMBER without digits is \(newString)")
         var finalString = ""
         let index = newString.count / 3
-        func addingDigits(startIndex: Int){
-            for _ in startIndex..<index {
+        if newString.count % 3 == 0 {
+            for _ in 1..<index {
                 newString.insert(",", at: newString.index(newString.endIndex, offsetBy: -3))
                 let range = newString.index(newString.endIndex, offsetBy: -4)..<newString.endIndex
-                finalString.append(contentsOf: newString[range])
+                finalString.insert(contentsOf: newString[range], at: finalString.startIndex)
                 newString = String(newString.unicodeScalars.dropLast(4))
             }
             print("Number with added decimal digits is \(newString + finalString)")
         }
-        if newString.count % 3 == 0 {
-            addingDigits(startIndex: 1)
-        }
         else {
-            addingDigits(startIndex: 0)
+            for _ in 0..<index {
+                newString.insert(",", at: newString.index(newString.endIndex, offsetBy: -3))
+                let range = newString.index(newString.endIndex, offsetBy: -4)..<newString.endIndex
+                finalString.insert(contentsOf: newString[range], at: finalString.startIndex)
+                newString = String(newString.unicodeScalars.dropLast(4))
+            }
+            print("Number with added decimal digits is \(newString + finalString)")
         }
     }
     
@@ -124,6 +129,13 @@ class Assignment3: NSObject {
                 }
             }
         }
+        //        for i in 1..<newArray.count {
+        //                if i < newArray.count {
+        //                    if newArray[i] == newArray[i-1] {
+        //                        newArray.remove(at: i-1)
+        //                    }
+        //                }
+        //            }
         print(newArray)
     }
 }
