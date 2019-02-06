@@ -129,13 +129,12 @@ class Assignment3: NSObject {
                 }
             }
         }
-        //        for i in 1..<newArray.count {
-        //                if i < newArray.count {
-        //                    if newArray[i] == newArray[i-1] {
-        //                        newArray.remove(at: i-1)
-        //                    }
-        //                }
-        //            }
-        print(newArray)
+        var newArrayWithUniqueNumbers: [Int] = []
+        for number in newArray {
+            if !newArrayWithUniqueNumbers.contains(number) {
+                newArrayWithUniqueNumbers.append(number)
+            }
+        }
+        print(newArrayWithUniqueNumbers)
     }
 }
