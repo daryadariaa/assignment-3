@@ -167,13 +167,14 @@ class Assignment3: NSObject {
     
     static func antimat(inputString: String) {
         print("UNEDITED TEXT\n\(inputString)\n")
-        var newString = inputString
         let swearWords: Set<String> = ["Fuck", "ass", "asshole", "shit", "damn", "bitch", "crap", "niggas"]
-        for name in swearWords {
-            if newString.contains(name) {
-                newString = newString.replacingOccurrences(of: name, with: "***")
+        var arrFromString = inputString.components(separatedBy: " ")
+        for i in 0..<arrFromString.count {
+            if swearWords.contains(arrFromString[i]) {
+                arrFromString[i] = "***"
             }
         }
-        print("\nText with NO ABUSIVE language:\n\(newString)")
+        let editedString = arrFromString.joined(separator: " ")
+        print("\nText with NO ABUSIVE language:\n\(editedString)")
     }
 }
