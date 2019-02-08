@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         Assignment3.selectStrings(inputArray: ["intermediate", "intention", "dev"], stringForSearch: "int")
         Assignment3.separator("TASK#10")
         Assignment3.antimat(inputString: "Every time we go out with them some shit go down, and them bitch niggas always in the way, or got something to do with it. Just drop me off asshole over here. Fuck this.")
+        Assignment3.separator("The end of assignment")
     }
 }
 
